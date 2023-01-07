@@ -1,6 +1,7 @@
 package com.eventospring.esCrudClientes.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,16 @@ public class ClientService {
 		 * for(Client cli : list) { listDTO.add(new ClientDTO(cli)); }
 		 */
 		return listDto;
+	}
+	
+	@Transactional(readOnly = true)
+	public ClientDTO findBYId(Long id){
+		
+		Optional<Client> obj = repository.findById(id);
+		Client entity = obj.get();
+		
+		return new ClientDTO(entity);
+		
 	}
 
 }
