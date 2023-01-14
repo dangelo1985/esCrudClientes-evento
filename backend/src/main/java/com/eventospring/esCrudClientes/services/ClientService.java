@@ -41,4 +41,11 @@ public class ClientService {
 		
 	}
 
+	public ClientDTO insert(ClientDTO dto) {
+		Client entity = new Client();
+		entity.setName(dto.getName());
+		entity.setCpf(dto.getCpf());
+		entity = repository.save(entity);
+		return new ClientDTO(entity);
+	}
 }
