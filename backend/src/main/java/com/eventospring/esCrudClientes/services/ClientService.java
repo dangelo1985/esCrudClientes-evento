@@ -57,4 +57,8 @@ public class ClientService {
 		entity = repository.save(entity);
 		return new ClientDTO(entity);
 	}
+
+	public void delete(long id) {
+		repository.deleteById(id);
+	}
 }
